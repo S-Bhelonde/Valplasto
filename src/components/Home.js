@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from "react";
 import { IoMdClose } from "react-icons/io";
 import { FaShieldAlt, FaThList, FaComments, FaChartLine, FaWarehouse } from "react-icons/fa";
+import DistributorCarousel from "./DistributorCarousel";
 import { Link } from "react-router-dom";
 import "../styles/Home.css";
 import CharacterIcon from "../assets/chatbot_icon.png";
@@ -64,15 +65,15 @@ const Home = () => {
 
       <section className="hero">
         <h1>Welcome to Valplasto Enterprises</h1>
-        <p>Delivering Quality Waterproofing Services</p>
+        <p>Construction chemicals and waterfrooping solutions.</p>
       </section>
 
       <section className="hero1">
         <h1>Why Choose Us?</h1>
         <p>
         Valplasto Enterprises is a leading brand for waterproofing solutions and providing top-notch waterproofing services.
-          The brand has in place exclusive solutions for different surface areas of the home, hence it's a one-stop shop for all your water leakage hassles.
-          Whether you're looking to repair, renovate, or construct a new home, Valplasto Enterprises has you covered.
+          The brand has in place exclusive solutions for different surface areas, hence it's a one-stop shop for all your water leakage hassles.
+          Whether you're looking to repair, renovate, or for a new construction. Valplasto Enterprises has you covered.
           Our services are designed to provide long-lasting durability, ensuring your peace of mind.
           Choose us for quality waterproofing solutions that deliver exceptional results, keeping your home safe and dry for years to come.
         </p>
@@ -136,6 +137,9 @@ const Home = () => {
         </div>
       </section>
 
+       {/* ✅ Added DistributorCarousel just before chatbot */}
+      <DistributorCarousel />
+
       <section className="content" id="chatbot">
         <div>
           <div style={styles.chatBotContainer} onClick={toggleChatBot}>
@@ -191,6 +195,7 @@ const Home = () => {
   );
 };
 
+
 const WhyChooseUs = () => {
   const features = [
     { icon: <FaShieldAlt size={28} color="#FF7F32" />, title: "Reliable Waterproofing", description: "Protects structures from leakage, seepage, and dampness." },
@@ -211,7 +216,7 @@ const WhyChooseUs = () => {
           </div>
         ))}
       </div>
-    </div>
+      </div>
   );
 };
 
@@ -255,5 +260,6 @@ const styles = {
   title: { fontSize: "1.1rem", fontWeight: "bold", marginBottom: "8px" },
   description: { fontSize: "0.9rem" }
 };
+
 
 export default Home;

@@ -1,8 +1,11 @@
-import React, { useState } from 'react';
-import { FaEnvelope, FaPhoneAlt, FaClock, FaMapMarkerAlt } from 'react-icons/fa';
-import { FaInstagram, FaTwitter, FaFacebookF, FaLinkedinIn, FaYoutube } from 'react-icons/fa';
+import React, { useState, useEffect } from 'react';
+import {
+  FaEnvelope, FaPhoneAlt, FaClock, FaMapMarkerAlt,
+  FaBars, FaTimes, FaInstagram, FaTwitter, FaFacebookF, FaLinkedinIn
+} from 'react-icons/fa';
 import '../styles/Navbar.css';
 import logo from "../assets/valplasto_logo.png";
+import { Link } from 'react-router-dom';
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -10,15 +13,30 @@ const Navbar = () => {
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
+    setOpenDropdown(null);
   };
 
   const toggleDropdown = (menu) => {
     setOpenDropdown(openDropdown === menu ? null : menu);
   };
 
+  const closeAllMenus = () => {
+    setOpenDropdown(null);
+    setIsMenuOpen(false);
+  };
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (!event.target.closest('nav')) {
+        closeAllMenus();
+      }
+    };
+    document.addEventListener('click', handleClickOutside);
+    return () => document.removeEventListener('click', handleClickOutside);
+  }, []);
+
   return (
     <>
-      {/* Top Info Bar */}
       <div className="top-navbar">
         <div className="top-left">
           <FaEnvelope className="icon" />
@@ -31,88 +49,58 @@ const Navbar = () => {
         </div>
         <div className="top-right">
           <FaPhoneAlt className="icon" />
-          <span>Call us +91-9766099437 / +91-9175181013</span>
+          <span>+91-9766099437 / +91-9175181013</span>
           <span className="divider">|</span>
           <FaClock className="icon" />
-          <span>Mon to Sat 9 AM to 6 PM</span>
+          <span>Mon to Sun 9 AM to 7 PM</span>
           <span className="divider">|</span>
           <FaMapMarkerAlt className="icon" />
           <span>Nagpur</span>
         </div>
       </div>
 
-      {/* Main Navigation */}
-      <nav>
+      <nav className="main-navbar">
         <div className="logo-container">
-          <img
-            src={logo}
-            alt="Valplasto Enterprises"
-            className="logo-img"
-          />
-          
+          <Link to="/" onClick={closeAllMenus}>
+            <img src={logo} alt="Valplasto Enterprises logo" className="logo-img" />
+          </Link>
         </div>
-        <div className="hamburger" onClick={toggleMenu}>
-          <i className={`fas fa-bars ${isMenuOpen ? 'active' : ''}`}></i>
-        </div>
+
+        <button className="hamburger" onClick={toggleMenu}>
+          {isMenuOpen ? <FaTimes /> : <FaBars />}
+        </button>
+
         <ul className={`nav-links ${isMenuOpen ? 'active' : ''}`}>
-          <li><a href="Home">Home</a></li>
-          <li><a href="AboutUs">About us</a></li>
+          <li><Link to="/Home" onClick={closeAllMenus}>Home</Link></li>
+          <li><Link to="/About" onClick={closeAllMenus}>About Us</Link></li>
+          <li><Link to="/Our_services" onClick={closeAllMenus}>Our Services</Link></li>
 
-          {/* Services Dropdown */}
-          <li className="dropdown">
-            <span onClick={() => toggleDropdown('services')}>
-              Our Services <i className={`fas fa-chevron-down ${openDropdown === 'services' ? 'rotated' : ''}`}></i>
-            </span>
-            {openDropdown === 'services' && (
-              <ul className="dropdown-menu">
-                <li><a href="#Consulting">Consulting</a></li>
-                <li><a href="#Maintenance">Maintenance</a></li>
-                <li><a href="#Installation">Installation</a></li>
-              </ul>
-            )}
-          </li>
-
-          {/* Products Dropdown */}
-          <li className="dropdown">
-            <span onClick={() => toggleDropdown('products')}>
-              Products <i className={`fas fa-chevron-down ${openDropdown === 'products' ? 'rotated' : ''}`}></i>
-            </span>
+          <li className={`dropdown ${openDropdown === 'products' ? 'open' : ''}`}>
+            <span onClick={() => toggleDropdown('products')}>Products</span>
             {openDropdown === 'products' && (
-              <table className="dropdown-menu products-menu">
-                <tbody>
-                  <tr><td><a href="Concrete Admixture">Concrete Admixture</a></td></tr>
-                  <tr><td><a href="Micro Concrete">Micro Concrete</a></td></tr>
-                  <tr><td><a href="Bitumeous Roll">Bitumeous Roll</a></td></tr>
-                  <tr><td><a href="GP2">GP2(Non Shrinkgrout)</a></td></tr>
-                  <tr><td><a href="Tile Adhesive">Tile Adhesive</a></td></tr>
-                  <tr><td><a href="Epoxy Grout">Epoxy Grout</a></td></tr>
-                  <tr><td><a href="WaterproofingChemicals">Waterproofing Chemicals</a></td></tr>
-                  <tr><td><a href="Butyle Tape">Butyle Tape</a></td></tr>
-                  <tr><td><a href="Epoxy Flooring">Epoxy Flooring</a></td></tr>
-                  <tr><td><a href="Polyurethane Sealent">Polyurethane Sealent</a></td></tr>
-                  <tr><td><a href="App Membrain">App Membrain</a></td></tr>
-                  <tr><td><a href="Self Leveler">Self Leveler</a></td></tr>
-                </tbody>
-              </table>
-            )}
-          </li>
-
-          {/* Projects Dropdown */}
-          <li className="dropdown">
-            <span onClick={() => toggleDropdown('projects')}>
-              Projects <i className={`fas fa-chevron-down ${openDropdown === 'projects' ? 'rotated' : ''}`}></i>
-            </span>
-            {openDropdown === 'projects' && (
               <ul className="dropdown-menu">
-                <li><a href="Ongoing">Ongoing</a></li>
-                <li><a href="Completed">Completed</a></li>
+                <li><Link to="/ConcreteAdmixture" onClick={closeAllMenus}>Concrete Admixture</Link></li>
+                <li><Link to="/Micro_concrete" onClick={closeAllMenus}>Micro Concrete</Link></li>
+                <li><Link to="/Waterproofing_tape" onClick={closeAllMenus}>Waterproofing Tape</Link></li>
+                <li><Link to="/GP" onClick={closeAllMenus}>Fosroc Conbextra GP2 Grout</Link></li>
+                <li><Link to="/Tile_Adhisive" onClick={closeAllMenus}>Tile Adhesive</Link></li>
+                <li><Link to="/epoxy-grout" onClick={closeAllMenus}>Epoxy Grout</Link></li>
+                <li><Link to="/Waterproofing_Chemicals" onClick={closeAllMenus}>Waterproofing Chemicals</Link></li>
+                <li><Link to="/Waterproofing_Membrane" onClick={closeAllMenus}>Waterproofing Membrane</Link></li>
+                <li><Link to="/epoxy-flooring" onClick={closeAllMenus}>Epoxy Flooring</Link></li>
+                <li><Link to="/Polyurethane_sealent" onClick={closeAllMenus}>Polyurethane Sealant</Link></li>
+                <li><Link to="/app-membrain" onClick={closeAllMenus}>APP Membrane</Link></li>
+                <li><Link to="/self-leveler" onClick={closeAllMenus}>Self Leveler</Link></li>
+                <li><Link to="/Thermal_insulation_paint" onClick={closeAllMenus}>Thermal Insulation Paint</Link></li>
+                <li><Link to="/Anchor" onClick={closeAllMenus}>Anchor</Link></li>
               </ul>
             )}
           </li>
 
-          <li><a href="Blogs">Blogs</a></li>
-          <li><a href="ContactUs">Contact Us</a></li>
-          <li><a href="Bookfreesitevisit">Book free site visit</a></li>
+          <li><Link to="/projects" onClick={closeAllMenus}>Projects</Link></li>
+          <li><Link to="/Blogs" onClick={closeAllMenus}>Blogs</Link></li>
+          <li><Link to="/ContactUs" onClick={closeAllMenus}>Contact Us</Link></li>
+          <li><Link to="/Bookfreesitevisit" onClick={closeAllMenus}>Book Free Site Visit</Link></li>
         </ul>
       </nav>
     </>

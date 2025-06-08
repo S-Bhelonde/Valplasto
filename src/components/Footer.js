@@ -1,6 +1,6 @@
 import React from "react";
 import "../styles/Footer.css";
-import { FaInstagram, FaWhatsapp, FaTruck, FaLock } from "react-icons/fa";
+import { FaInstagram, FaWhatsapp, FaTruck, FaHeadset } from "react-icons/fa";
 import { MdLocalShipping } from "react-icons/md";
 import logo from "../assets/valplasto_logo.png"; // Adjust path if needed
 
@@ -10,19 +10,19 @@ const Footer = () => {
       {/* Top Section */}
       <div className="footer-top">
         <div className="footer-info-box">
-          <MdLocalShipping className="footer-icon" />
-          <p className="footer-title">Free Shipping</p>
-          <p className="footer-subtitle">On all orders above Rs 499</p>
-        </div>
-        <div className="footer-info-box">
           <FaTruck className="footer-icon" />
           <p className="footer-title">On Time Delivery</p>
           <p className="footer-subtitle">Delivery before estimate date</p>
         </div>
         <div className="footer-info-box">
-          <FaLock className="footer-icon" />
-          <p className="footer-title">100% Secured Payments</p>
-          <p className="footer-subtitle">We are officially registered</p>
+          <FaHeadset className="footer-icon" />
+          <p className="footer-title">Expert Support</p>
+          <p className="footer-subtitle">Get guidance from our experts</p>
+        </div>
+        <div className="footer-info-box">
+          <MdLocalShipping className="footer-icon" />
+          <p className="footer-title">Registered & Trusted</p>
+          <p className="footer-subtitle">100% secured business</p>
         </div>
       </div>
 
@@ -62,7 +62,7 @@ const Footer = () => {
         <div className="footer-column">
           <h3 className="footer-heading">Contact Info</h3>
           <ul className="footer-contact">
-            <li>Address: Plot No. 141,Priti Society,Behind Sundar Factory,Koradi Road,Nagpur - 441111, Maharashtra, India</li>
+            <li>Address: Plot No. 141, Priti Society, Behind Sundar Factory, Koradi Road, Nagpur - 441111, Maharashtra, India</li>
             <li>Phone: +91-9766099437 , 9175181013</li>
             <li>Email: valplasto@gmail.com</li>
           </ul>
@@ -72,7 +72,7 @@ const Footer = () => {
       {/* Bottom Section */}
       <div className="footer-bottom">
         <div className="footer-socials">
-          <a href="https://instagram.com/valplastoenterprises" target="_blank" rel="noopener noreferrer">
+          <a href="https://www.instagram.com/valplasto_enterprises?igsh=MTZ0NXo1aTcxeXYxNA==" target="_blank" rel="noopener noreferrer">
             <FaInstagram /> @valplastoenterprises
           </a>
           <a

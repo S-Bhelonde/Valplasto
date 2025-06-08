@@ -24,7 +24,7 @@ const FreeSiteVisitForm = () => {
 
     // WhatsApp link for sending message
     const whatsappMessage = `Hi, I'm ${name}.\nPhone: ${phone}\nEmail: ${email}\nAddress: ${address}\nSite Address: ${siteAddress}\nWork Started: ${workStarted}`;
-    const whatsappLink = `https://wa.me/9175181013?text=${encodeURIComponent(whatsappMessage)}`;
+    const whatsappLink = `https://wa.me/9766099437?text=${encodeURIComponent(whatsappMessage)}`;
 
     // Redirect to WhatsApp with the message
     window.open(whatsappLink, "_blank");

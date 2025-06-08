@@ -49,11 +49,11 @@ const ContactUs = () => {
           </div>
           <div style={styles.infoItem}>
             <FaMapMarkerAlt style={styles.icon} />
-            141, Priti Society, Behind Sundar Factory, Koradi Road, Nagpur - 441111
+            141, Priti Society, Behind Sundar Factory,Durga Mata Nagar, Koradi Road, Nagpur - 441111
           </div>
           <div style={styles.infoItem}>
             <FaPhoneAlt style={styles.icon} />
-            +91 97660 99437
+            +91 97660 99437/ 9175181013
           </div>
           <div style={styles.infoItem}>
             <FaEnvelope style={styles.icon} />
@@ -61,7 +61,7 @@ const ContactUs = () => {
           </div>
           <div style={styles.infoItem}>
             <FaClock style={styles.icon} />
-            Monday - Saturday, 9:00 AM - 6:00 PM
+            Monday - Sunday, 9:00 AM - 9:00 PM
           </div>
         </div>
 
