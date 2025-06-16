@@ -22,6 +22,7 @@ import Micro_concrete from './components/Micro_concrete';
 import Tile_Adhisive from './components/Tile_Adhisive';
 import Anchor from './components/Anchor';
 import Thermal_insulation_paint from './components/Thermal_insulation_paint';
+import About_us from './components/About_us';
 
 
 function App() {
@@ -51,6 +52,7 @@ function App() {
           <Route path="/Tile_Adhisive" element={<Tile_Adhisive/>} />
           <Route path="/Anchor" element={<Anchor/>} />
           <Route path="/Thermal_insulation_paint" element={<Thermal_insulation_paint/>} />
+          <Route path="/About_us" element={<About_us/>} />
         </Routes>
       </div>
       <Footer />

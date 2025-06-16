@@ -72,7 +72,7 @@ const Navbar = () => {
 
         <ul className={`nav-links ${isMenuOpen ? 'active' : ''}`}>
           <li><Link to="/Home" onClick={closeAllMenus}>Home</Link></li>
-          <li><Link to="/About" onClick={closeAllMenus}>About Us</Link></li>
+          <li><Link to="/About_us" onClick={closeAllMenus}>About Us</Link></li>
           <li><Link to="/Our_services" onClick={closeAllMenus}>Our Services</Link></li>
 
           <li className={`dropdown ${openDropdown === 'products' ? 'open' : ''}`}>
